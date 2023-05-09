@@ -6,9 +6,15 @@ import colors from '../../utils/styles/colors'
 
 
 const WrapperCollapse = styled.div`
-  width: 70%;
-  transform: translateX(18%);
   margin-bottom: 25px;
+
+  ${({ customStyle }) => customStyle === 'small' && `
+    width : 582px;
+  `}
+
+  ${({ customStyle }) => customStyle === 'large' && `
+    width : 100%;
+  `}
 
   @media (max-width: 375px) {
     transform: translateX(15%);
@@ -22,7 +28,7 @@ const WrapperCollapse = styled.div`
 const Button = styled.div`
   background-color: ${ colors.primary };
   color: white;
-  width: 100%;
+  // width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,7 +52,7 @@ const Button = styled.div`
 const Content = styled.div`
   color: ${ colors.primary };
   font-size: 24px;
-  width: 100%;
+  // width: 100%;
   font-weight: 400;
   line-height: 142.6%;
   background-color: ${ colors.tertiary };
@@ -69,7 +75,7 @@ const Icon = styled.img`
   }
 `
 
-const Collapse = ({ title, content }) => {
+const Collapse = ({ title, content, customStyle }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleCollapse = () => {
@@ -77,7 +83,7 @@ const Collapse = ({ title, content }) => {
   };
 
   return (
-    <WrapperCollapse>
+    <WrapperCollapse style={ customStyle }>
       <Button onClick={toggleCollapse}>
         { title }
         {isOpen ? (

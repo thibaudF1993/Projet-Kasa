@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const SlideshowWrapper = styled.div`
   width: 100%;
   position: relative;
+  height: 450px;
   `
   
   const PictureContainer = styled.div`
@@ -13,7 +14,7 @@ const SlideshowWrapper = styled.div`
   `
 
 const Pictures = styled.img`
-  width: 86%;
+  width: 92%;
   height: 415px;
   border-radius: 25px;
   object-fit: cover;
@@ -21,7 +22,7 @@ const Pictures = styled.img`
 `
 
 const Overlay = styled.div`
-  width: 86%;
+  width: 92%;
   height: 415px;
   background: #000000;
   mix-blend-mode: darken;
@@ -32,7 +33,7 @@ const Overlay = styled.div`
 
 const BulletPoint = styled.div`
   position: absolute;
-  top: 380px;
+  top: 395px;
   bottom: 65px;
   color: white;
   display: flex;
@@ -46,7 +47,7 @@ const BulletPoint = styled.div`
 
 const ArrowsContainer = styled.div`
   position: fixed;
-  bottom: 410px;
+  top: 170px;
   display: flex;
   justify-content: space-between;
   width: 86%;

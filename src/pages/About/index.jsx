@@ -14,6 +14,8 @@ const BannerContainer = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 70%;
+  transform: translateX(18%);
 
   @media (min-height: 788px) {
     min-height: 355px;
