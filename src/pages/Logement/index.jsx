@@ -26,7 +26,19 @@ const Title = styled.h2`
   color: ${ colors.primary };
   margin-top: 0px;
   margin-bottom: 5px;
-`
+   
+  @media (max-width: 375px) {
+    font-size: 18px;
+  }
+  
+  @media (min-width: 376px) and  (max-width: 639px) {
+    font-size: 26px;
+  }
+
+  @media (max-width: 754px) {
+    width: 92%;
+  }
+  `
 
 const Location = styled.div`
   font-weight: 500;
@@ -34,9 +46,16 @@ const Location = styled.div`
   line-height: 142.6%;
   color: ${ colors.primary };
 
+  @media (max-width: 375px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 376px) and  (max-width: 639px) {
+    font-size: 16px;
+  }
 `
 
-const Tags = styled.p`
+const Tags = styled.span`
   font-weight: 500;
   font-size: 14px;
   text-align: center;
@@ -49,26 +68,62 @@ const Tags = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
+
+  @media (max-width: 375px) {
+    width: 84px;
+    font-size: 10px;
+    margin-bottom: 10px;
+    height: 18px;
+  }
 `
 
 const TagsContainer = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
 `
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 93%;
+  align-items: center;
+
+  @media (max-width: 754px) {
+    display: initial;
+  }
 `
 
 const Rating = styled.div`
   display: flex;
   justify-content: end;
+
+  @media (max-width: 375px) {
+    display: initial;
+  }
+`
+
+const Stars = styled.img`
+  margin-left: 10px;
+
+  @media (max-width: 375px) {
+    width: 13px;
+    height: 13px;
+    margin-left: 5px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+  }
 `
 
 const Host = styled.div`
   display: flex;
+  margin-bottom: 10px;
 `
 
 const HostName = styled.div`
@@ -78,27 +133,70 @@ const HostName = styled.div`
   display: flex;
   align-items: flex-end;
   text-align: right;
+  color: ${ colors.primary };
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 375px) {
+    font-size: 12px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    font-size: 16.5px;
+    width: 70px;
+  }
 `
 
 const HostPicture = styled.img`
+  border-radius: 40px;
+  width: 64px;
+  height: 64px;
 
+  @media (max-width: 375px) {
+    width: 32px;
+    height: 32px;
+  }
 `
 
 const RatingHostContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 
+  @media (max-width: 375px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 92%;
+    margin-bottom: 0px;
+  }
+
+  @media (min-width: 376px) and (max-width: 754px) {
+    justify-content: inherit;
+    flex-direction: row;
+    width: 92%;
+    align-items: center;
+  }
 `
 
 const CollapseContainer = styled.div`
   width: 93%;
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
+
+  @media (max-width: 375px) {
+    justify-content: flex-start;
+    flex-direction: column;
+    transform: translateX(0%);
+  }
 `
-const EquipmentList = styled.li`
-  list-style-type: none;
+
+const EquipmentList =styled.p`
+  margin: 0;
 `
+
 
 function Logement() {
 
@@ -113,11 +211,11 @@ function Logement() {
     const starImages = [];
 
     for (let i = 0; i < filledStars; i++) {
-      starImages.push(<img key={ `filled-${ i }` } src={ FilledStar } alt="Filled star" />);
+      starImages.push(<Stars key={ `filled-${ i }` } src={ FilledStar } alt="Filled star" />);
     }
 
     for (let i = 0; i < emptyStars; i++) {
-      starImages.push(<img key={ `empty-${ i }` } src={ EmptyStar } alt="Empty star" />);
+      starImages.push(<Stars key={ `empty-${ i }` } src={ EmptyStar } alt="Empty star" />);
     }
 
     return starImages;
@@ -161,17 +259,25 @@ function Logement() {
         <Collapse
           title="Description"
           content={ logement.description }
-          customStyle={{ width: "48%" }}
+          customStyle={{ 
+            width: "48%", 
+            fontSize: "18px"
+
+            
+          }}
           className="collapse-description"
         />
         <Collapse
           title="Equipements"
           content={ logement.equipments.map((equipment, index) => (
-            <ul key={`equipment-${ index }`}>
-              <EquipmentList>{ equipment }</EquipmentList>
-            </ul>
+            <EquipmentList key={`equipment-${ index }`}>
+              { equipment }
+            </EquipmentList>
           ))}
-          customStyle={{ width: "48%" }}
+          customStyle={{ 
+            width: "48%", 
+            fontSize: "18px"
+          }}
           className="collapse-equipments"
         />
       </CollapseContainer>

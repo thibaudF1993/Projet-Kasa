@@ -8,14 +8,6 @@ import colors from '../../utils/styles/colors'
 const WrapperCollapse = styled.div`
   margin-bottom: 25px;
 
-  ${({ customStyle }) => customStyle === 'small' && `
-    width : 582px;
-  `}
-
-  ${({ customStyle }) => customStyle === 'large' && `
-    width : 100%;
-  `}
-
   @media (max-width: 375px) {
     transform: translateX(15%);
   }
@@ -28,11 +20,9 @@ const WrapperCollapse = styled.div`
 const Button = styled.div`
   background-color: ${ colors.primary };
   color: white;
-  // width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 24px;
   border-radius: 5px;
   padding-left: 15px;
   padding-right: 15px;
@@ -51,7 +41,6 @@ const Button = styled.div`
 
 const Content = styled.div`
   color: ${ colors.primary };
-  font-size: 24px;
   // width: 100%;
   font-weight: 400;
   line-height: 142.6%;

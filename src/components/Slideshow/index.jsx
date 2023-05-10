@@ -6,11 +6,28 @@ const SlideshowWrapper = styled.div`
   width: 100%;
   position: relative;
   height: 450px;
+
+  @media (max-width: 375px) {
+    height: 255px;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    height: 300px;
+  }
   `
   
   const PictureContainer = styled.div`
   width: 100%;
   position: absolute;
+
+  @media (max-width: 375px) {
+    height: 255px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    height: 282px;
+  }
   `
 
 const Pictures = styled.img`
@@ -19,6 +36,14 @@ const Pictures = styled.img`
   border-radius: 25px;
   object-fit: cover;
   position: absolute;
+
+  @media (max-width: 375px) {
+    height: 255px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    height: 282px;
+  }
 `
 
 const Overlay = styled.div`
@@ -29,6 +54,14 @@ const Overlay = styled.div`
   opacity: 0.3;
   position: absolute;
   border-radius: 25px;
+
+  @media (max-width: 375px) {
+    height: 255px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    height: 282px;
+  }
 `
 
 const BulletPoint = styled.div`
@@ -43,6 +76,10 @@ const BulletPoint = styled.div`
   font-size: 18px;
   line-height: 142.6%;
   left: 42%;
+
+  @media (max-width: 560px) {
+    display: none;
+  }
 `
 
 const ArrowsContainer = styled.div`
@@ -50,16 +87,43 @@ const ArrowsContainer = styled.div`
   top: 170px;
   display: flex;
   justify-content: space-between;
-  width: 86%;
+  width: 92%;
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    top: 115px;
+  }
+
+  @media (max-width: 375px) {
+    top: 115px;
+  }
 `
 const LeftArrow = styled.img`
   position: relative;
   left: 23px;
+
+  @media (max-width: 375px) {
+  width: 12px;
+  height: 20px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    width: 20px;
+    height: 35px;
+  }
 `
 const RightArrow = styled.img`
   position: relative;
   right: 23px;
 
+  @media (max-width: 375px) {
+    width: 12px;
+    height: 20px;
+  }
+
+  @media (min-width: 376px) and (max-width: 560px) {
+    width: 20px;
+    height: 35px;
+  }
 `
 
 
