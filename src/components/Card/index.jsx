@@ -73,9 +73,9 @@ width: 300px;
   }
 
   @media (min-width: 376px) and (max-width: 684px) {
-    width: 335px;
-    height: 285px;
-    margin: 15px;
+    width: 257px;
+    line-height: normal;
+
   }
 `;
 

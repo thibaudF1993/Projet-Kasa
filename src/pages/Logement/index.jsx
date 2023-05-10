@@ -185,18 +185,20 @@ const CollapseContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
+  font-size: 18px;
 
   @media (max-width: 375px) {
-    justify-content: flex-start;
-    flex-direction: column;
-    transform: translateX(0%);
+    display: inherit;
+  }
+
+  @media (min-width: 376px) and (max-width: 830px) {
+    display: inherit;
   }
 `
 
 const EquipmentList =styled.p`
   margin: 0;
 `
-
 
 function Logement() {
 
@@ -259,12 +261,6 @@ function Logement() {
         <Collapse
           title="Description"
           content={ logement.description }
-          customStyle={{ 
-            width: "48%", 
-            fontSize: "18px"
-
-            
-          }}
           className="collapse-description"
         />
         <Collapse
@@ -274,10 +270,6 @@ function Logement() {
               { equipment }
             </EquipmentList>
           ))}
-          customStyle={{ 
-            width: "48%", 
-            fontSize: "18px"
-          }}
           className="collapse-equipments"
         />
       </CollapseContainer>

@@ -13,11 +13,18 @@ const BannerContainer = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
-  transform: translateX(20%);
+  width: 74%;
+  transform: translateX(31%);
+  font-size: 24px;
+  margin-bottom: 25px;
 
-  @media (max-width: 482px) {
-    transform: translateX(7%);
+  @media (max-width: 375px) {
+    transform: translateX(19%);
+  }
+
+  @media (max-width: 830px) {
+    width: 70%;
+    transform: translateX(20%);
   }
 
   @media (min-height: 788px) {
@@ -36,28 +43,16 @@ const About = () => {
           <Banner image={BannerImage} alt="Paysage de montagne avec forêt" />
         </BannerContainer>
         <Container>
-          <Collapse 
-            customStyle={{ 
-              fontSize: "24px", 
-            }}
+          <Collapse
             title= "Fiabilité"
             content="Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont régulièrement vérifiées  par nos équipes."/>
           <Collapse 
-            customStyle={{ 
-              fontSize: "24px", 
-            }}
             title= "Respect"
             content="La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoire ou de perturbation du voisinage entraînera une exclusion de notre plateforme."/>
           <Collapse 
-            customStyle={{ 
-              fontSize: "24px", 
-            }}
             title= "Service"
             content="Nos équipes se tiennent à votre disposition pour vous fournir une expérience parfaite. N'hésitez pas à nous contacter si vous avez la moindre question."/>
           <Collapse 
-            customStyle={{ 
-              fontSize: "24px", 
-            }}
             title= "Sécurité"
             content="La sécurité est la priorité de Kasa. Aussi bien pour nos hôtes que pour les voyageurs, chaque logement correspond aux critères de sécurité établis par nos services. En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes."/>
         </Container>

@@ -8,12 +8,10 @@ import colors from '../../utils/styles/colors'
 const WrapperCollapse = styled.div`
   margin-bottom: 25px;
 
-  @media (max-width: 375px) {
-    transform: translateX(15%);
-  }
-
-  @media (min-width: 376px) and (max-width: 480px) {
-    transform: translateX(16%);
+  @media (min-width: 830px){
+    min-width: 48%;
+    max-width: 71%;
+    margin-right: 30px;
   }
 `
 
@@ -41,15 +39,17 @@ const Button = styled.div`
 
 const Content = styled.div`
   color: ${ colors.primary };
-  // width: 100%;
   font-weight: 400;
   line-height: 142.6%;
   background-color: ${ colors.tertiary };
   border-radius: 5px;
   padding: 15px;
+  min-height: 285px;
+  letter-spacing: 1px;
 
   @media (max-width: 375px) {
     font-size: 12px;
+    min-height: auto;
   }
 
   @media (min-width: 376px) and (max-width: 480px) {
