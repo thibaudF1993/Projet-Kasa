@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import dataJSON from '../../data.json'; 
 import leftArrow from "../../assets/left.png";
 import rightArrow from "../../assets/right.png";
@@ -13,10 +15,14 @@ import colors from "../../utils/styles/colors";
 const LogementContainer = styled.div`
   width: 92%;
   transform: translateX(8%);
-`
 
-const TitleContainer = styled.div`
+  @media (min-height: 1179px) {
+    min-height: 809px;
+  }
 
+  @media (min-height: 1179px) and (max-height: 1400px){
+    min-height: 995px;
+  }
 `
 
 const Title = styled.h2`
@@ -88,7 +94,7 @@ const TagsContainer = styled.div`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 93%;
+  width: 91%;
   align-items: center;
 
   @media (max-width: 754px) {
@@ -202,28 +208,54 @@ const EquipmentList =styled.p`
 
 function Logement() {
 
+  // On récupère l'URL de la page
   const pathname = window.location.pathname;
+
+  // On extrait l'ID du logement depuis l'URL
   const logementId = pathname.split('/logement/')[1];
+
+  // On cherche le logement correspondant dans la base de données
   const logement = dataJSON.find((logement) => logement.id === logementId);
 
-  const getStars = (rating) => {
-    const maxRating = 5;
-    const filledStars = Math.round(rating);
-    const emptyStars = maxRating - filledStars;
-    const starImages = [];
+  // On déclare une constante qui utilise le hook useNavigate
+  const navigate = useNavigate();
 
+  // On utilise le hook UseEffect pour vérifier si le logement existe 
+  useEffect(() => {
+    if (!logement) {
+      // Si le logement n'existe pas, on navigue vers la page d'erreur, 
+      // une fois que le composant est monté, puis on render le contenu du composant normalement si l'élément existe.
+      navigate('/error');
+    }
+  }, [logement, navigate]);
+
+  // Si le logement n'existe pas, on ne retourne rien
+  if (!logement) {
+    return null;
+  }
+
+  // Fonction renvoyant le bon nombre d'étoiles sur 5
+  const getStars = (rating) => {
+    const maxRating = 5; // Le nombre maximum d'étoiles
+    const filledStars = Math.round(rating); // Le nombre d'étoiles remplies, arrondi au nombre entier le plus proche
+    const emptyStars = maxRating - filledStars; // Le nombre d'étoiles vides
+    const starImages = []; // On crée un tableau qui va contenir les images des étoiles
+
+    // On crée des images pour les étoiles remplies
     for (let i = 0; i < filledStars; i++) {
       starImages.push(<Stars key={ `filled-${ i }` } src={ FilledStar } alt="Filled star" />);
     }
 
+    // On crée des images pour les étoiles vides
     for (let i = 0; i < emptyStars; i++) {
       starImages.push(<Stars key={ `empty-${ i }` } src={ EmptyStar } alt="Empty star" />);
     }
 
+    // On renvoie l'array
     return starImages;
   };
 
-
+  // On retourne la page logement avec toutes les informations
   return (
 
     <LogementContainer className="logement-container">
@@ -232,7 +264,7 @@ function Logement() {
 
       <Wrapper className="title-rating-host-wrapper">
 
-        <TitleContainer key={ logement.id } className="title-location-tags-container">
+        <div key={ logement.id } className="title-location-tags-container">
 
           <Title>{ logement.title }</Title>
           <Location>{ logement.location }</Location>
@@ -242,7 +274,7 @@ function Logement() {
           ))}
           </TagsContainer>
 
-        </TitleContainer>
+        </div>
 
         <RatingHostContainer className="rating-host-container">
 

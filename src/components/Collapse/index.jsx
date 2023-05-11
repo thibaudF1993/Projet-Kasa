@@ -44,7 +44,7 @@ const Content = styled.div`
   background-color: ${ colors.tertiary };
   border-radius: 5px;
   padding: 15px;
-  min-height: 285px;
+  min-height: 252px;
   letter-spacing: 1px;
 
   @media (max-width: 375px) {
@@ -64,15 +64,18 @@ const Icon = styled.img`
   }
 `
 
-const Collapse = ({ title, content, customStyle }) => {
+const Collapse = ({ title, content }) => {
+
+  // Utilisation de useState pour la gestion de l'état du composant
   const [isOpen, setIsOpen] = useState(false);
 
+  // Fonction qui permet de basculer l'état de isOpen
   const toggleCollapse = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <WrapperCollapse style={ customStyle }>
+    <WrapperCollapse>
       <Button onClick={toggleCollapse}>
         { title }
         {isOpen ? (

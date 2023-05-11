@@ -128,16 +128,21 @@ const RightArrow = styled.img`
 
 
 const Slideshow = ({ images, arrows }) => {
+
+  // Utilisation du hook useState pour stocker l'index de l'image en cours
   const [currentImage, setCurrentImage] = useState(0);
 
+  // Fonction pour passer à l'image précédente
   const handlePrev = () => {
     setCurrentImage((currentImage - 1 + images.length) % images.length);
   };
 
+  // Fonction pour passer à l'image suivante
   const handleNext = () => {
     setCurrentImage((currentImage + 1) % images.length);
   };
 
+  // Afficher le bulletpoint et les flèches si nombre d'images > à 1
   const showBulletAndArrows = images.length > 1;
 
 
