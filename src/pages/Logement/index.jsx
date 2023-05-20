@@ -224,7 +224,7 @@ function Logement() {
   useEffect(() => {
     if (!logement) {
       // Si le logement n'existe pas, on navigue vers la page d'erreur, 
-      // une fois que le composant est monté, puis on render le contenu du composant normalement si l'élément existe.
+      // on render le contenu du composant normalement si l'élément existe.
       navigate('/error');
     }
   }, [logement, navigate]);
